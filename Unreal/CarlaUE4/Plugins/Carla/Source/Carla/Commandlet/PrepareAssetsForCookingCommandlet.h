@@ -85,12 +85,15 @@ public:
   /// @pre World is expected to be previously loaded
   TArray<AStaticMeshActor *> SpawnMeshesToWorld(
       const TArray<FString> &AssetsPaths,
-      bool bUseCarlaMaterials,
-      bool bIsPropsMap = false);
+      bool bUseCarlaMaterials);
 
   /// Saves the current World, contained in @a AssetData, into @a DestPath
   /// composed of @a PackageName and with @a WorldName.
-  bool SaveWorld(FAssetData &AssetData, FString &PackageName, FString &DestPath, FString &WorldName);
+  bool SaveWorld(
+      FAssetData &AssetData,
+      const FString &PackageName,
+      const FString &DestPath,
+      const FString &WorldName);
 
   /// Destroys all the previously spawned actors stored in @a SpawnedActors
   void DestroySpawnedActorsInWorld(TArray<AStaticMeshActor *> &SpawnedActors);
@@ -98,6 +101,26 @@ public:
   /// Gets the Path of all the Assets contained in the package to cook with name
   /// @a PackageName
   FAssetsPaths GetAssetsPathFromPackage(const FString &PackageName) const;
+
+  /// Generates the MapPaths file provided @a AssetsPaths and @a PropsMapPath
+  void GenerateMapPathsFile(const FAssetsPaths &AssetsPaths, const FString &PropsMapPath) const;
+
+  /// Generates the PackagePat file that contains the path of a package with @a
+  /// PackageName
+  void GeneratePackagePathFile(const FString &PackageName) const;
+
+  /// For each Map data contained in @MapsPaths, it creates a World, spawn its
+  /// actors inside the world and saves it in .umap format
+  /// in a destination path built from @a PackageName.
+  void PrepareMapsForCooking(const FString &PackageName, const TArray<FMapData> &MapsPaths);
+
+  /// For all the props inside @a PropsPaths, it creates a single World, spawn
+  /// all the props inside the world and saves it in .umap format
+  /// in a destination path built from @a PackageName and @a MapDestPath.
+  void PreparePropsForCooking(
+      const FString &PackageName,
+      const TArray<FString> &PropsPaths,
+      FString &MapDestPath);
 
 public:
 

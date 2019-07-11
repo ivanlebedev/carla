@@ -209,11 +209,9 @@ for PACKAGE_NAME in "${PACKAGES[@]}" ; do if [[ ${PACKAGE_NAME} != "Carla" ]] ; 
       -run=cook -map="${MAPS_TO_COOK}" -cooksinglepackage -targetplatform="LinuxNoEditor" \
       -OutputDir="${BUILD_FOLDER}"
 
-  PROP_MAP_FOLDER="${PACKAGE_PATH}/Maps/${PROPS_MAP_NAME}"
-
-  if [ -d ${PROP_MAP_FOLDER} ] ; then
-    rm -Rf ${PROP_MAP_FOLDER}
-  fi
+  PROP_MAP_PATH="${PACKAGE_PATH}/Maps/${PROPS_MAP_NAME}"
+  rm -f ${PROP_MAP_PATH}.umap
+  rm -f ${PROP_MAP_PATH}.uexp
 
   popd >/dev/null
 
@@ -252,9 +250,10 @@ for PACKAGE_NAME in "${PACKAGES[@]}" ; do if [[ ${PACKAGE_NAME} != "Carla" ]] ; 
 
     rm -Rf "./CarlaUE4/Metadata"
     rm -Rf "./CarlaUE4/Plugins"
-    rm -Rf "./CarlaUE4/Content/${PACKAGE_NAME}/Maps/${PROPS_MAP_NAME}"
+    rm -f "./CarlaUE4/Content/${PACKAGE_NAME}/Maps/${PROPS_MAP_NAME}".*
     rm -f "./CarlaUE4/AssetRegistry.bin"
-
+    rm -f ${PACKAGE_PATH_FILE}
+    rm -f ${MAP_LIST_FILE}
     tar -czvf ${DESTINATION} *
 
     popd >/dev/null
