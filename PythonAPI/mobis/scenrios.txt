@@ -1,0 +1,47 @@
+first basic:
+
+           ######### oncoming truck
+            transform3 = carla.Transform(carla.Location(x=-90.6, y=90.7, z=1), carla.Rotation(yaw=90))
+            self.add_vehicle(ind=4, moving=True, transform=transform3)
+
+            ######### oncoming bus
+            transform3 = carla.Transform(carla.Location(x=-85.6, y=70.7, z=1), carla.Rotation(yaw=90))
+            self.add_vehicle(ind=20, moving=True, transform=transform3)
+
+            ######### crossing truck
+            transform4 = carla.Transform(carla.Location(x=-101.6, y=140.7, z=1), carla.Rotation(yaw=0))
+            self.add_vehicle(ind=4, moving=True, transform=transform4)
+
+            ######### crossing truck
+            transform5 = carla.Transform(carla.Location(x=-55.6, y=132.7, z=1), carla.Rotation(yaw=180))
+            self.add_vehicle(ind=24, moving=True, transform=transform5)
+
+            ######### preciding truck
+            transform5 = carla.Transform(carla.Location(x=-77.8, y=150.5, z=1), carla.Rotation(yaw=-90))
+            self.add_vehicle(ind=24, moving=True, transform=transform5)
+
+preceding car going away:
+
+            transform = carla.Transform(carla.Location(x=-73.8, y=148.5, z=1), carla.Rotation(yaw=-90))
+            self.add_vehicle(ind=14, moving=True, transform=transform)
+
+crossing static
+
+            # ######### crossing truck
+            # transform4 = carla.Transform(carla.Location(x=-101.6, y=140.7, z=1), carla.Rotation(yaw=0))
+            # self.add_vehicle(ind=18, moving=True, transform=transform4, speed=1.0)
+            #
+            # transform4 = carla.Transform(carla.Location(x=-120.6, y=140.7, z=1), carla.Rotation(yaw=0))
+            # self.add_vehicle(ind=9, moving=True, transform=transform4, speed=1.0)
+            #
+            # transform4 = carla.Transform(carla.Location(x=-130.6, y=140.7, z=1), carla.Rotation(yaw=0))
+            # self.add_vehicle(ind=4, moving=True, transform=transform4, speed=1.0)
+            #
+            # transform4 = carla.Transform(carla.Location(x=-60.6, y=133.7, z=1), carla.Rotation(yaw=180))
+            # self.add_vehicle(ind=10, moving=True, transform=transform4, speed=1.0)
+            #
+            # transform4 = carla.Transform(carla.Location(x=-45.6, y=133.7, z=1), carla.Rotation(yaw=180))
+            # self.add_vehicle(ind=4, moving=True, transform=transform4, speed=1.0)
+            #
+            # transform4 = carla.Transform(carla.Location(x=-30.6, y=133.7, z=1), carla.Rotation(yaw=180))
+            # self.add_vehicle(ind=12, moving=True, transform=transform4, speed=1.0)
